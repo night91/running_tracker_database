@@ -6,9 +6,10 @@ module RunningTrackerDatabase
     attr_reader: :user_id, :email, :password
 
     class << self
-      def retrieve(db, email)
-        login = db[:login].where(email: email).first
-        fail 'User not found' unless login
+      def retrieve(db, email, password)
+        password_hash = Digest::SHA256.base64digest(password)
+        login = db[:login].where(email: email, password: password_hash).first
+        fail 'Error in credentials' unless login
         Login.new(db, login)
       end
 
