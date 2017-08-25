@@ -41,5 +41,11 @@ Sequel.migration do
       DateTime    :end_time
       Float       :distance, default: 0
     end
+
+    create_table(:login) do
+      String      :email, size: 50, primary_key: true
+      String      :password, size: 30, index: true
+      String      :user_id, size: 24, unique: true, index: true
+    end
   end
 end
