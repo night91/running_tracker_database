@@ -11,7 +11,7 @@ module RunningTrackerDatabase
         User.new(db, user)
       end
 
-      def create_user(db, data)
+      def create(db, data)
         user_id = generate_unique_id
 
         data[:user_id] = user_id

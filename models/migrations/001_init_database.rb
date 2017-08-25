@@ -44,8 +44,8 @@ Sequel.migration do
 
     create_table(:login) do
       String      :email, size: 50, primary_key: true
-      String      :password, size: 30, index: true
-      String      :user_id, size: 24, unique: true, index: true
+      String      :user_id, size: 24, unique: true, index: true, null: false
+      String      :password, size: 30, index: true, null: false
     end
   end
 end
