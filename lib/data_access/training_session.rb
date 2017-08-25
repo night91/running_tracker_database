@@ -29,6 +29,16 @@ module RunningTrackerDatabase
       @active_session_id = user[:active_session_id]
     end
 
+    def to_h
+      {
+        user_id: @user_id,
+        training_session_id: @training_session_id
+        start_time: @start_time.iso8601
+        end_time: @end_time.iso8601
+        active_session_id: @active_session_id
+      }
+    end
+
     def create_running_session
       @db.transaction(rollback: :reraise) do
         @db[:training_session].where(training_session_id: @training_session_id).update(active_session_id: running_session_id)}

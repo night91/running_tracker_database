@@ -26,5 +26,15 @@ module RunningTrackerDatabase
       @end_time = user[:end_time]
       @distance = user[:distance]
     end
+
+    def to_h
+      {
+        running_session_id: @running_session_id,
+        training_session_id: @training_session_id
+        start_time: @start_time.iso8601
+        end_time: @end_time.iso8601
+        distance: @distance
+      }
+    end
   end
 end

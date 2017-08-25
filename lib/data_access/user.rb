@@ -36,5 +36,17 @@ module RunningTrackerDatabase
       @weight = user[:weight]
       @height = user[:height]
     end
+
+    def to_h
+      {
+        user_id: @user_id,
+        email: @email
+        name: @name
+        lastname: @lastname
+        birthdate: @birthdate.iso8601
+        weight: @weight
+        height: @height
+      }
+    end
   end
 end
