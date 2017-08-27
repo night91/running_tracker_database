@@ -8,7 +8,7 @@ Sequel.migration do
       String      :email, size: 50, null: false, unique: true, index: true
       String      :name, size: 50, null: false
       String      :lastname, size: 50, null: false
-      DateTime    :birthdate, null: false
+      DateTime    :birthday, null: false
       Float       :weight
       Float       :height
     end
@@ -21,7 +21,7 @@ Sequel.migration do
 
     create_table(:user_activity) do
       String      :user_id, size: 24, primary_key: true
-      String      :active_training_session_id, size: 24, null: false, index: true
+      String      :active_training_session_id, size: 24, null: true, index: true
     end
 
     create_table(:training_session) do

@@ -20,6 +20,6 @@ module RunningTrackerDatabase
   end
 
   def self.generate_unique_id
-    SecureRandom.hex(24)
+    SecureRandom.hex(12)
   end
 end

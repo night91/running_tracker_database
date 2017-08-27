@@ -12,12 +12,16 @@ module RunningTrackerDatabase
       end
 
       def create(db, data)
-        training_session_id = generate_unique_id
+        training_session_id = RunningTrackerDatabase.generate_unique_id
         data[:training_session_id] = training_session_id
         db[:training_session].insert(data)
         training_session_id
       end
-    end 
+
+      def all_training_sessions_by_user_id(db, user_id)
+        db[:training_session].where(user_id: user_id).all
+      end
+    end
 
     def initialize(db, data)
       @db = db

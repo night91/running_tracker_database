@@ -10,7 +10,7 @@ module RunningTrackerDatabase
       end
 
       def create(db, data)
-        running_session_id = generate_unique_id
+        running_session_id = RunningTrackerDatabase.generate_unique_id
         data[:running_session_id] = running_session_id
         db[:running_session].insert(data)
         running_session_id
