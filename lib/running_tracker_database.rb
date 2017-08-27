@@ -1,6 +1,12 @@
 require 'securerandom'
 require 'running_tracker_database/version'
-require './models/constructor'
+
+require_relative '../models/constructor'
+require_relative 'data_access/login'
+require_relative 'data_access/running_session'
+require_relative 'data_access/training_session'
+require_relative 'data_access/user'
+require_relative 'data_access/user_activity'
 
 # Kueski Database module
 module RunningTrackerDatabase

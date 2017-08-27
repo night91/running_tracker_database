@@ -1,5 +1,5 @@
 module RunningTrackerDatabase
-  attr_reader: :user_id, :active_training_session
+  attr_reader :user_id, :active_training_session
 
   class UserActivity
     class << self
@@ -10,7 +10,7 @@ module RunningTrackerDatabase
       end
 
       def create(db, user_id)
-        db[:user_activity].insert(user_id: user_id))
+        db[:user_activity].insert(user_id: user_id)
         user_id
       end
     end
@@ -30,7 +30,7 @@ module RunningTrackerDatabase
 
     def create_training_session
       @db.transaction(rollback: :reraise) do
-        @db[:user_activity].where(user_id: user_id).update(active_training_session: training_session_id)}
+        @db[:user_activity].where(user_id: user_id).update(active_training_session: training_session_id)
         training_session_id = TrainingSession.create(@db, user_id: @user_id, start_time: Time.now)
 
         @active_training_session = training_session_id

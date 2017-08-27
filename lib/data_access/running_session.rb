@@ -1,6 +1,6 @@
 module RunningTrackerDatabase
   class RunningSession
-    attr_reader: :running_session_id, :training_session_id, :start_time, :end_time, :distance
+    attr_reader :running_session_id, :training_session_id, :start_time, :end_time, :distance
 
     class << self
       def retrieve(db, running_session_id)
@@ -12,7 +12,7 @@ module RunningTrackerDatabase
       def create(db, data)
         running_session_id = generate_unique_id
         data[:running_session_id] = running_session_id
-        db[:running_session].insert(data))
+        db[:running_session].insert(data)
         running_session_id
       end
     end 
@@ -20,19 +20,19 @@ module RunningTrackerDatabase
     def initialize(db, data)
       @db = db
 
-      @running_session_id = user[:running_session_id]
-      @training_session_id = user[:training_session_id]
-      @start_time = user[:start_time]
-      @end_time = user[:end_time]
-      @distance = user[:distance]
+      @running_session_id = data[:running_session_id]
+      @training_session_id = data[:training_session_id]
+      @start_time = data[:start_time]
+      @end_time = data[:end_time]
+      @distance = data[:distance]
     end
 
     def to_h
       {
         running_session_id: @running_session_id,
-        training_session_id: @training_session_id
-        start_time: @start_time.iso8601
-        end_time: @end_time.iso8601
+        training_session_id: @training_session_id,
+        start_time: @start_time.iso8601,
+        end_time: @end_time.iso8601,
         distance: @distance
       }
     end

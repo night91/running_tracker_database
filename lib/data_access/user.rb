@@ -2,7 +2,7 @@ require_relative 'user_activity'
 
 module RunningTrackerDatabase
   class User
-    attr_reader: :user_id, :email, :name, :lastname, :birthdate, :weight, :height
+    attr_reader :user_id, :email, :name, :lastname, :birthdate, :weight, :height
 
     class << self
       def retrieve_user(db, user_id)
@@ -28,23 +28,23 @@ module RunningTrackerDatabase
     def initialize(db, data)
       @db = db
 
-      @user_id = user[:user_id]
-      @email = user[:email]
-      @name = user[:name]
-      @lastname = user[:lastname]
-      @birthdate = user[:birthdate]
-      @weight = user[:weight]
-      @height = user[:height]
+      @user_id = data[:user_id]
+      @email = data[:email]
+      @name = data[:name]
+      @lastname = data[:lastname]
+      @birthdate = data[:birthdate]
+      @weight = data[:weight]
+      @height = data[:height]
     end
 
     def to_h
       {
         user_id: @user_id,
-        email: @email
-        name: @name
-        lastname: @lastname
-        birthdate: @birthdate.iso8601
-        weight: @weight
+        email: @email,
+        name: @name,
+        lastname: @lastname,
+        birthdate: @birthdate.iso8601,
+        weight: @weight,
         height: @height
       }
     end
